@@ -7,5 +7,7 @@
 // require('./example')
 
 $(() => {
-  // your JS code goes here
+  $('div').click(function () {
+    $('.box1').text('yo')
+  })
 })
