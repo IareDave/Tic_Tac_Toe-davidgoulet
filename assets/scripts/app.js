@@ -2,11 +2,14 @@
 
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')
-
+const userEvents = require('./auth/events.js')
+const exampleEvents = require('./examples/events.js')
 // use require without a reference to ensure a file is bundled
 // require('./example')
 
 $(() => {
+  userEvents.addHandlers()
+  exampleEvents.addHandlers()
   // Player and win condition setup
   const gameLogic = {
     gameBoard: 1,
@@ -31,7 +34,8 @@ $(() => {
   // Click handler
   $('.tic-box').on('click', function () {
     // Supposed to prevent placing marks on occupied spots
-    if (cells !== ('X' || 'O')) {
+    // Supposed to display warning message if spot is unavailable
+    if (cells.text !== ('X' || 'O')) {
       if (gameLogic.playerCounter % 2 === 0) {
         // Let player know it is X's turn
         $(this).append(gameLogic.playerOne)
@@ -48,12 +52,14 @@ $(() => {
   $('button').on('click', function () {
     $('.tic-box').text('')
 
-    // Check cell for text
+    // Supposed to check cell for text
     if (cells.text === ('X' || 'O')) {
       console.log('busted')
     }
 
     // Check for winner
     // Compare cells.id with winCombos array
+    // Inform user of game ending condition
+    // Do not allow users to place mark after game over
   })
 })
