@@ -1,43 +1,70 @@
 @import '~bootstrap/scss/bootstrap';
 
-.ads {
-  text-align: center;
-  margin: .4vw 0;
-  background: #F4CC70;
-  padding: .4vw;
-}
-
+// Color behind board
 .content {
   margin: .4vw 0;
-  background: lightblue;
+  // background: lightblue;
   padding: .4vw;
 }
 
+// Options panel
 .tic-panel {
-  border: solid 2px black;
-  margin: .4vw 0;
   background: #66A5AD;
+  border: solid #000000;
+  margin: .4vw 0;
   padding: .4vw;
 }
 
+// Color of tic-tac-toe boxes
 .tic-box {
-  border: solid black 1px;
+  border: solid black 3px;
   font-size: 5vw;
   background: #6AB187;
   text-align: center;
   color: lavender;
   width: 85px;
   height: 85px;
+  border-top: 0;
+  border-right: 0;
+}
+
+.tic-box:first-child {
+  border-left: 0;
+}
+
+.tic-box:first-child {
+  border-left: 0;
+}
+
+.box7, .box8, .box9 {
+  border-bottom: 0;
 }
 
 .tic-box:hover {
   background: #20948B;
 }
 
-.box1 {
-  background-image: url("public/maxresdefault.jpg");
+.endgame {
+  display: none;
+  width: 200px;
+  top: 120px;
+  background-color: rgba(200, 130, 60, 0.5);
+  position: absolute;
+  left: 50%;
+  margin-left: -100px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  font-size: 2em;
 }
 
+/*
+ .box1 {
+  background-image: url("public/maxresdefault.jpg");
+}
+*/
 .x-img {
   background-image: url("public/maxresdefault.jpg")
 }
