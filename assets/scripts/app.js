@@ -30,11 +30,14 @@ $(() => {
 
   // Click handler
   $('.tic-box').on('click', function () {
+    // Supposed to prevent placing marks on occupied spots
     if (cells !== ('X' || 'O')) {
       if (gameLogic.playerCounter % 2 === 0) {
+        // Let player know it is X's turn
         $(this).append(gameLogic.playerOne)
         gameLogic.playerCounter++
       } else {
+        // Let player know it is O's turn
         $(this).append(gameLogic.playerTwo)
         gameLogic.playerCounter++
       }
@@ -44,5 +47,13 @@ $(() => {
   // Clear game board
   $('button').on('click', function () {
     $('.tic-box').text('')
+
+    // Check cell for text
+    if (cells.text === ('X' || 'O')) {
+      console.log('busted')
+    }
+
+    // Check for winner
+    // Compare cells.id with winCombos array
   })
 })
