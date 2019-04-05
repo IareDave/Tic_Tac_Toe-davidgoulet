@@ -8,6 +8,25 @@ const exampleEvents = require('./examples/events.js')
 // require('./example')
 
 $(() => {
+  var sizeTheOverlays = function () {
+    $('.overlay').resize().each(function () {
+      var h = $(this).parent().outerHeight()
+      var w = $(this).parent().outerWidth()
+      $(this).css('height', h)
+      $(this).css('width', w)
+    })
+  }
+
+  sizeTheOverlays()
+
+  var width = $(window).width()
+  $(window).resize(function () {
+    if ($(this).width() !== width) {
+      width = $(this).width()
+      sizeTheOverlays()
+    }
+  })
+  // Api handlers
   userEvents.addHandlers()
   exampleEvents.addHandlers()
   // Player and win condition setup

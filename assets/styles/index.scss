@@ -2,6 +2,7 @@
 
 // Color of tic-tac-toe boxes
 .tic-box {
+  position: relative;
   border: solid black 3px;
   font-size: 5vw;
   text-align: center;
@@ -29,4 +30,25 @@
 
 .tic-box:hover {
   background: #20948B;
+  cursor: pointer;
+}
+
+.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 2;
+  opacity: 0;
+  background: rgba(39, 42, 43, 0.8);
+  transition: opacity 200ms ease-in-out;
+  border-radius: 4px;
+  margin: -15px 0 0 -15px;
+  button {
+  margin:5px;
+  }
+  &:hover {
+    cursor: pointer;
+    opacity: 1;
+  }
 }
