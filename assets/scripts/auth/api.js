@@ -2,6 +2,7 @@
 
 const config = require('../config.js')
 const store = require('../store.js')
+const ui = require('./ui.js')
 
 const signUp = function (data) {
   return $.ajax({
@@ -40,9 +41,61 @@ const signOut = function () {
   })
 }
 
+const createGame = function () {
+  return $.ajax({
+    url: config.apiUrl + 'games',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {}
+  })
+}
+
+const updateGame = function (currentMove, currentIndex, over) {
+  if (over) {
+    over = true
+  } else {
+    over = false
+  }
+  const currentGameId = store.game.id
+  const gameLogic = {
+    'game': {
+      'cell': {
+        'index': currentIndex,
+        'value': currentMove
+      },
+      'over': over
+    }
+  }
+  return $.ajax({
+    url: config.apiUrl + 'games/' + currentGameId,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: gameLogic
+  })
+}
+
+const getGames = function () {
+  let content = ''
+  return $.ajax({
+    url: config.apiUrl + 'games?over=true',
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json',
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
-  signOut
+  signOut,
+  getGames,
+  updateGame,
+  createGame
 }

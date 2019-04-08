@@ -10,44 +10,42 @@
       <!-- Do not add `script` tags-->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+
     </head>
     <body>
       <div class="container-fluid">
-  <!--  <div class="row">
-      <div class="col-sm-6 col-sm-offset-3">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="overlay"> -->
+        <div class="row">
               <button class="btn btn-primary">sign up</button>
               <button class="btn btn-primary">sign in</button>
             </div>
       <div class="col-12 col-sm-6 content">
         <div class="container-fluid tic-container">
           <div class="row tic-row">
-            <div class="col-4 tic-box box1"></div>
-            <div class="col-4 tic-box box2" id="square"></div>
-            <div class="col-4 tic-box box3" id="square"></div>
+            <div class="col-4 tic-box box1" id="0"></div>
+            <div class="col-4 tic-box box2" id="1"></div>
+            <div class="col-4 tic-box box3" id="2"></div>
           </div>
           <div class="row tic-row">
-            <div class="col-4 tic-box box4" id="square"></div>
-            <div class="col-4 tic-box box5" id="square"></div>
-            <div class="col-4 tic-box box6" id="square"></div>
+            <div class="col-4 tic-box box4" id="3"></div>
+            <div class="col-4 tic-box box5" id="4"></div>
+            <div class="col-4 tic-box box6" id="5"></div>
           </div>
           <div class="row tic-row">
-            <div class="col-4 tic-box box7" id="square"></div>
-            <div class="col-4 tic-box box8" id="square"></div>
-            <div class="col-4 tic-box box9" id="square"></div>
-          <!--</div>
-        </div>
-      </div>-->
+            <div class="col-4 tic-box box7" id="6"></div>
+            <div class="col-4 tic-box box8" id="7"></div>
+            <div class="col-4 tic-box box9" id="8"></div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <button>reset board</button>
+      <div class="endgame">
+        <div class="text">
 
-<h1>Sign up</h1>
+        </div>
+      </div>
+  <button class="startButton">start game</button>
+
+<h1 id="signup">Sign up</h1>
   <form id="sign-up">
   <input name="credentials[email]" type="text" value="an@example.email">
   <input name="credentials[password]" type="password" value="an example password">
@@ -55,7 +53,7 @@
   <input type="submit" value="Sign Up!">
 </form>
 
-<h1>Sign in</h1>
+<h1 id="signin">Sign in</h1>
 <form id="sign-in">
   <input name="credentials[email]" type="text" value="an@example.email">
   <input name="credentials[password]" type="password" value="an example password">

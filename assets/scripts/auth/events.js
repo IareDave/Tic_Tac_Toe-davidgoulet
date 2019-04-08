@@ -8,7 +8,6 @@ const onSignUp = function (event) {
   event.preventDefault()
 
   const data = getFormFields(event.target)
-  console.log(data)
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
@@ -28,16 +27,16 @@ const onChangePassword = function (event) {
 
   const data = getFormFields(event.target)
   api.changePassword(data)
-    .then()
-    .catch()
+    .then(ui.changePasswordSuccess)
+    .catch(ui.changePasswordFailure)
 }
 
 const onSignOut = function (event) {
   event.preventDefault()
 
   api.signOut()
-    .then()
-    .catch()
+    .then(ui.signOutSuccess)
+    .catch(ui.signOutFailure)
 }
 
 const addHandlers = function () {
@@ -45,6 +44,17 @@ const addHandlers = function () {
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('submit', onSignOut)
+  $('.tic-box').on('click', gameEvents.playMade)
+  $('.startButton').on('click', function () {
+    api.createGame()
+      .then(ui.createGameSuccess)
+      .catch(ui.createGameFailure)
+  })
+
+  $('#sign-up').hide()
+  $('#sign-in').hide()
+  $('#change-password').hide()
+  $('#sign-out').hide()
 }
 
 module.exports = {
