@@ -4,16 +4,17 @@ const getFormFields = require('./../../../lib/get-form-fields.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
 
-const onSignUp = function (event) {
+export const onSignUp = function (event) {
   event.preventDefault()
 
   const data = getFormFields(event.target)
+  console.log(data)
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
 }
 
-const onSignIn = function (event) {
+export const onSignIn = function (event) {
   event.preventDefault()
 
   const data = getFormFields(event.target)
@@ -22,41 +23,41 @@ const onSignIn = function (event) {
     .catch(ui.signInFailure)
 }
 
-const onChangePassword = function (event) {
+export const onChangePassword = function (event) {
   event.preventDefault()
 
   const data = getFormFields(event.target)
   api.changePassword(data)
-    .then(ui.changePasswordSuccess)
-    .catch(ui.changePasswordFailure)
+    .then()
+    .catch()
 }
 
-const onSignOut = function (event) {
+export const onSignOut = function (event) {
   event.preventDefault()
-
   api.signOut()
-    .then(ui.signOutSuccess)
-    .catch(ui.signOutFailure)
+    .then()
+    .catch()
 }
 
-const addHandlers = function () {
+export const onNewGame = function (event) {
+  event.preventDefault()
+  api.newGame()
+    .then(ui.newGameSuccess)
+    .catch(ui.newGameFailure)
+}
+
+export const onShowStats = function (event) {
+  event.preventDefault()
+  api.showStats()
+    .then(ui.showStatsSuccess)
+    .catch(ui.showStatsFailure)
+}
+
+export const addHandlers = function () {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('submit', onSignOut)
-  $('.tic-box').on('click', gameEvents.playMade)
-  $('.startButton').on('click', function () {
-    api.createGame()
-      .then(ui.createGameSuccess)
-      .catch(ui.createGameFailure)
-  })
-
-  $('#sign-up').hide()
-  $('#sign-in').hide()
-  $('#change-password').hide()
-  $('#sign-out').hide()
-}
-
-module.exports = {
-  addHandlers
+  $('#reset-button').on('click', onNewGame)
+  $('#show-stats').on('click', onShowStats)
 }

@@ -2,9 +2,8 @@
 
 const config = require('../config.js')
 const store = require('../store.js')
-const ui = require('./ui.js')
 
-const signUp = function (data) {
+export const signUp = function (data) {
   return $.ajax({
     url: config.apiUrl + '/sign-up',
     method: 'POST',
@@ -12,7 +11,7 @@ const signUp = function (data) {
   })
 }
 
-const signIn = function (data) {
+export const signIn = function (data) {
   return $.ajax({
     url: config.apiUrl + '/sign-in',
     method: 'POST',
@@ -20,82 +19,64 @@ const signIn = function (data) {
   })
 }
 
-const changePassword = function (data) {
-  $.ajax({
+export const changePassword = function (data) {
+  return $.ajax({
     url: config.apiUrl + '/change-password',
     method: 'PATCH',
     headers: {
-      Authorization: 'Token token=' + store.user.token
+      Authorization: 'Token token=' + (store.user ? store.user.token : '')
     },
     data
   })
 }
 
-const signOut = function () {
+export const signOut = function () {
+
   return $.ajax({
     url: config.apiUrl + '/sign-out',
     method: 'DELETE',
     headers: {
-      Authorization: 'Token token=' + store.user.token
+      Authorization: 'Token token=' + (store.user ? store.user.token : '')
     }
   })
 }
 
-const createGame = function () {
+export const newGame = function () {
   return $.ajax({
-    url: config.apiUrl + 'games',
+    url: config.apiUrl + `/games`,
     method: 'POST',
     headers: {
-      Authorization: 'Token token=' + store.user.token
-    },
-    data: {}
-  })
-}
-
-const updateGame = function (currentMove, currentIndex, over) {
-  if (over) {
-    over = true
-  } else {
-    over = false
-  }
-  const currentGameId = store.game.id
-  const gameLogic = {
-    'game': {
-      'cell': {
-        'index': currentIndex,
-        'value': currentMove
-      },
-      'over': over
+      Authorization: 'Token token=' + (store.user ? store.user.token : '')
     }
-  }
-  return $.ajax({
-    url: config.apiUrl + 'games/' + currentGameId,
-    method: 'PATCH',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    },
-    data: gameLogic
   })
 }
 
-const getGames = function () {
-  let content = ''
+export const showStats = function () {
+
   return $.ajax({
-    url: config.apiUrl + 'games?over=true',
+    url: config.apiUrl + `/games/${store.game ? store.game.id : ''}`,
     method: 'GET',
     headers: {
-      'Content-type': 'application/json',
-      Authorization: 'Token token=' + store.user.token
+      Authorization: 'Token token=' + (store.user ? store.user.token : '')
     }
   })
 }
 
-module.exports = {
-  signUp,
-  signIn,
-  changePassword,
-  signOut,
-  getGames,
-  updateGame,
-  createGame
+export const onPlayMade = function (index, currentPlayer, gameIsOver) {
+  return $.ajax({
+    url: config.apiUrl + `/games/${(store.game ? store.game.id : '')}`,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + (store.user ? store.user.token : '')
+    },
+    data: {
+      'game': {
+        'cell': {
+          'index': index,
+          'value': currentPlayer
+        },
+        'over': gameIsOver
+      }
+    }
+  })
 }
