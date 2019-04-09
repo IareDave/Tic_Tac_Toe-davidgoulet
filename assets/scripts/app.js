@@ -8,6 +8,8 @@ const userEvents = require('./auth/events.js')
 
 $(() => {
   // Api handlers
+  $('.container-fluid').hide()
+  $('#reset-button').hide()
   userEvents.addHandlers()
   const reset = () => {
     gameLogic.resetBoard()
@@ -22,6 +24,7 @@ $(() => {
 
   $('#reset-button').on('click', function () {
     reset()
+    $('.container-fluid').show()
   })
 
   // Click handler
@@ -29,7 +32,7 @@ $(() => {
     // Supposed to prevent placing marks on occupied spots
     // Supposed to display warning message if spot is unavailable
     const id = event.target.id
-    const update = gameLogic.updateBoard()
+    const update = gameLogic.updateBoard(id)
     if (update) {
       onPlayMade(update.index, update.currentPlayer, update.gameIsOver)
       $(this).text(gameLogic.currentPlayer)

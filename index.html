@@ -10,11 +10,14 @@
       <!-- Do not add `script` tags-->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-
     </head>
     <body>
       <div class="container-fluid">
-        <div class="row">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="overlay">
               <button class="btn btn-primary">sign up</button>
               <button class="btn btn-primary">sign in</button>
             </div>
@@ -37,23 +40,23 @@
           </div>
         </div>
       </div>
-    </div>
-      <div class="endgame">
-        <div class="text">
-
+          </div>
         </div>
       </div>
-  <button class="startButton">start game</button>
+    </div>
+  </div>
+  <button id='reset-button'>new game</button>
+  <button id='show-stats'>show stats</button>
 
-<h1 id="signup">Sign up</h1>
+<h1>Sign up</h1>
   <form id="sign-up">
   <input name="credentials[email]" type="text" value="an@example.email">
   <input name="credentials[password]" type="password" value="an example password">
   <input name="credentials[password_confirmation]" type="password" value="an example password">
-  <input type="submit" value="Sign Up!">
+  <input type="submit" value="Sign Up!" id="signUpLabel">
 </form>
 
-<h1 id="signin">Sign in</h1>
+<h1>Sign in</h1>
 <form id="sign-in">
   <input name="credentials[email]" type="text" value="an@example.email">
   <input name="credentials[password]" type="password" value="an example password">
