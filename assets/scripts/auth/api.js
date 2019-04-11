@@ -31,7 +31,6 @@ export const changePassword = function (data) {
 }
 
 export const signOut = function () {
-
   return $.ajax({
     url: config.apiUrl + '/sign-out',
     method: 'DELETE',
@@ -52,9 +51,8 @@ export const newGame = function () {
 }
 
 export const showStats = function () {
-
   return $.ajax({
-    url: config.apiUrl + `/games/${store.game ? store.game.id : ''}`,
+    url: config.apiUrl + `/games`,
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + (store.user ? store.user.token : '')

@@ -2,14 +2,20 @@
 
 import Game from './game/logic'
 import { onPlayMade } from './auth/api'
-// import {showStats} from './auth/api';
+// import { showStats } from './auth/api';
 
 const userEvents = require('./auth/events.js')
 
 $(() => {
   // Api handlers
+  $('#signup-message').hide()
+  $('#signin-message').hide()
+  $('#changepassword-message').hide()
   $('.container-fluid').hide()
   $('#reset-button').hide()
+  $('#show-stats').hide()
+  $('#sign-in').hide()
+  $('#change-password').hide()
   userEvents.addHandlers()
   const reset = () => {
     gameLogic.resetBoard()
@@ -29,8 +35,6 @@ $(() => {
 
   // Click handler
   $('.tic-box').on('click', function (event) {
-    // Supposed to prevent placing marks on occupied spots
-    // Supposed to display warning message if spot is unavailable
     const id = event.target.id
     const update = gameLogic.updateBoard(id)
     if (update) {
@@ -38,7 +42,6 @@ $(() => {
       $(this).text(gameLogic.currentPlayer)
       if (gameLogic.checkForWinCondition()) {
         // end the game
-        console.log(`${gameLogic.currentPlayer} wins!`)
       }
 
       gameLogic.currentPlayer === gameLogic.playerOne ?

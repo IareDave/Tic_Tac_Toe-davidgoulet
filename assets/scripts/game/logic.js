@@ -54,10 +54,13 @@ class Game {
 
     this.numberOfPlays++
     this.board[index] = this.currentPlayer
+
     if (this.checkForWinCondition()) {
-      console.log(`${this.currentPlayer} wins!`)
+      $('#endgame-message').text(`${this.currentPlayer} wins!`).css('color', 'green')
+      // check for tie
     } else if (this.numberOfPlays === 9) {
       this.gameIsOver = true
+      $('#endgame-message').text(`The game is a tie! Press new game to continue`).css('color', 'green')
     }
 
     return {

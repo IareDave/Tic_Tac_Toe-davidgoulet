@@ -3,12 +3,12 @@
 const getFormFields = require('./../../../lib/get-form-fields.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
+const store = require('../store.js')
 
 export const onSignUp = function (event) {
   event.preventDefault()
 
   const data = getFormFields(event.target)
-  console.log(data)
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
@@ -28,8 +28,8 @@ export const onChangePassword = function (event) {
 
   const data = getFormFields(event.target)
   api.changePassword(data)
-    .then()
-    .catch()
+    .then(ui.changePwSuccess)
+    .catch(ui.changePwFailure)
 }
 
 export const onSignOut = function (event) {
@@ -41,6 +41,7 @@ export const onSignOut = function (event) {
 
 export const onNewGame = function (event) {
   event.preventDefault()
+  $('#endgame-message').text('')
   api.newGame()
     .then(ui.newGameSuccess)
     .catch(ui.newGameFailure)
@@ -48,6 +49,7 @@ export const onNewGame = function (event) {
 
 export const onShowStats = function (event) {
   event.preventDefault()
+  $('#endgame-message').text(`This is game number ${store.game.id}`)
   api.showStats()
     .then(ui.showStatsSuccess)
     .catch(ui.showStatsFailure)
