@@ -14,7 +14,8 @@ $(() => {
   $('.container-fluid').hide()
   $('#reset-button').hide()
   $('#show-stats').hide()
-  $('#sign-in').hide()
+  $('#sign-out').hide()
+  // $('#sign-in').hide()
   $('#change-password').hide()
   userEvents.addHandlers()
   const reset = () => {

@@ -35,8 +35,8 @@ export const onChangePassword = function (event) {
 export const onSignOut = function (event) {
   event.preventDefault()
   api.signOut()
-    .then()
-    .catch()
+    .then(ui.signOutSuccess)
+    .catch(ui.signOutFailure)
 }
 
 export const onNewGame = function (event) {
@@ -49,7 +49,6 @@ export const onNewGame = function (event) {
 
 export const onShowStats = function (event) {
   event.preventDefault()
-  $('#endgame-message').text(`This is game number ${store.game.id}`)
   api.showStats()
     .then(ui.showStatsSuccess)
     .catch(ui.showStatsFailure)
@@ -59,7 +58,7 @@ export const addHandlers = function () {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
-  $('#sign-out').on('submit', onSignOut)
+  $('#sign-out').on('click', onSignOut)
   $('#reset-button').on('click', onNewGame)
   $('#show-stats').on('click', onShowStats)
 }
