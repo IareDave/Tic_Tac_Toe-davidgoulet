@@ -5,14 +5,20 @@ const store = require('../store.js')
 export const signUpSuccess = function (data) {
   $('form').trigger('reset')
   $('#signup-message').show()
+  $('#signin-message').hide()
   $('#signup-message').text('Sign up successful! Sign in to play the game')
   $('#signup-message').css('color', 'green')
-  $('#sign-in').show()
-  // $('#sign-up').hide()
+  // $('#sign-in').show()
+  $('#sign-up').hide()
+  $('.back').hide()
+  $('.menusignup').show()
+  $('.menusignin').show()
+  $('#change-password').hide()
 }
 
 export const signUpFailure = function (data) {
   $('form').trigger('reset')
+  $('#signin-message').hide()
   $('#signup-message').show()
   $('#signup-message').text('Sign up failed!')
   $('#signup-message').css('color', 'red')
@@ -26,24 +32,34 @@ export const signInSuccess = function (data) {
   $('#signin-message').show()
   $('#signin-message').text('Sign in successful! Click New Game to Begin')
   $('#signin-message').css('color', 'green')
-  $('#change-password').show()
+  $('#endgame-message').show()
   $('#show-stats').hide()
   $('#signup-message').hide()
   $('#sign-out').show()
-  // $('#sign-up').hide()
+  $('#sign-up').hide()
   $('#sign-in').hide()
+  $('.menunewgame').show()
+  $('.menushowstats').show()
+  $('.menulogout').show()
+  $('.menusignin').hide()
+  $('.menusignup').hide()
+  $('.menuchangepw').show()
+  $('.back').hide()
 }
 
 export const signInFailure = function (data) {
   $('form').trigger('reset')
-  $('#signin-message').html('Sign in failed!')
+  $('#signin-message').show()
+  $('#signin-message').text('Sign in failed!').css('color', 'red')
   $('#signin-message').css('color', 'red')
+  $('#signup-message').hide()
 }
 
 export const changePwSuccess = function (data) {
   $('form').trigger('reset')
   $('#changepassword-message').show()
   $('#signin-message').hide()
+  $('#change-password').hide()
   $('#changepassword-message').text(`You have successfully changed your password. Press new game to continue`).css('color', 'green')
   // store.user = data.user
 }
@@ -60,14 +76,18 @@ export const signOutSuccess = function (data) {
   $('#signup-message').hide()
   $('#signin-message').hide()
   $('#changepassword-message').hide()
-  $('.container-fluid').hide()
   $('#reset-button').hide()
   $('#show-stats').hide()
   $('#sign-out').hide()
-  $('#sign-in').show()
+  $('#sign-in').hide()
   $('#change-password').hide()
   $('#showstats-message').hide()
   $('#endgame-message').hide()
+  $('#sign-up').hide()
+  $('.menusignup').show()
+  $('.menusignin').show()
+  $('.menuchangepw').hide()
+  $('.back').hide()
   store.user = null
   store.game = null
 }
@@ -81,8 +101,10 @@ export const newGameSuccess = function (data) {
   $('#signin-message').hide()
   $('#signup-message').hide()
   $('#changepassword-message').hide()
+  $('#showstats-message').hide()
   store.game = data.game
   $('#show-stats').show()
+  $('.container-fluid').css('z-index', '3')
 }
 
 export const newGameFailure = function (data) {
@@ -91,6 +113,10 @@ export const newGameFailure = function (data) {
 
 export const showStatsSuccess = function (data) {
   $('#showstats-message').show()
+  $('#signin-message').hide()
+  $('#signup-message').hide()
+  $('#endgame-message').hide()
+  $('#changepassword-message').hide()
   $('#showstats-message').text(`You have played ${data.games.length} games`).css('color', 'green')
 }
 

@@ -12,12 +12,16 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
+      <div class="messages">
+      <div id="endgame-message"></div>
+      <div id="showstats-message"></div>
+      <div id="newgame-message"></div>
+    </div>
       <div class="container-fluid">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3">
         <div class="panel panel-default">
           <div class="panel-body">
-            <div class="overlay">
             </div>
       <div class="col-12 col-sm-6 content">
         <div class="container-fluid tic-container">
@@ -42,26 +46,42 @@
         </div>
       </div>
     </div>
+<!--
+    <div class="buttons">
+    <button class="btn btn-primary">sign up</button>
+    <button class="btn btn-primary">sign in</button>
   </div>
-  <button id='reset-button'>new game</button>
-  <button id='show-stats'>show stats</button>
-  <button  id="sign-out">Sign out</button>
-  <div id="endgame-message"></div>
-  <div id="showstats-message"></div>
+-->
+<button class="btn btn-primary end">end</button>
+
+  <div id="ui" class="overlay">
+    <div class="buttons">
+    <button class="btn btn-primary signUp">sign up</button>
+    <button class="btn btn-primary signIn">sign in</button>
+  </div>
+  <button class="btn btn-primary back">back</button>
+  <button class="btn btn-primary menusignup">sign up</button>
+  <button class="btn btn-primary menusignin">sign in</button>
+  <button id='reset-button' class="btn btn-primary menunewgame">new game</button>
+  <button id='show-stats' class="btn btn-primary menushowstats">shows stats</button>
+  <button id="sign-out" class="btn btn-primary menulogout">logout</button>
+  <button class="btn btn-primary menuchangepw">change password</button>
+
+
+
   <div id="signout-message"></div>
-  <div id="newgame-message"></div>
 
 <div id="signup-message"></div>
-  <form id="sign-up">
+  <form id="sign-up" class="sign-up-form">
     <h1>Sign up</h1>
   <input name="credentials[email]" type="text" placeholder="Enter your email">
   <input name="credentials[password]" type="password" placeholder="Enter your password">
   <input name="credentials[password_confirmation]" type="password" placeholder="Confirm your password">
-  <input type="submit" value="Sign Up!" id="signUpLabel">
+  <input type="submit" value="Sign Up!">
 </form>
 
 <div id="signin-message"></div>
-<form id="sign-in">
+<form id="sign-in" class="sign-in-form">
   <h1>Sign in</h1>
   <input name="credentials[email]" type="text" placeholder="Enter your email">
   <input name="credentials[password]" type="password" placeholder="Enter your password">
@@ -69,12 +89,13 @@
 </form>
 
 <div id="changepassword-message"></div>
-<form id="change-password">
+<form id="change-password" class="change-password-form">
   <h1>Change password</h1>
   <input name="passwords[old]" placeholder="Enter old password" type="password">
   <input name="passwords[new]" placeholder="Enter new password" type="password">
   <input type="submit" value="Change Password!">
 </form>
+</div>
 
 <!--
 <div class="container">
