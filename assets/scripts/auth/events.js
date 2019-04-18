@@ -107,6 +107,12 @@ export const changePwMenu = function (data) {
   $('.menunewgame').hide()
   $('.menuchangepw').hide()
   $('#change-password').show()
+  $('#endgame-message').text('')
+  $('#showstats-message').text('')
+  $('#newgame-message').text('')
+  $('#signout-message').text('')
+  $('#signup-message').hide()
+  $('#signin-message').hide()
 }
 
 export const backButton = function (data) {
