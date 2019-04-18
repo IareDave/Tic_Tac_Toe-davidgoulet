@@ -24,6 +24,7 @@ $(() => {
   $('.menushowstats').hide()
   $('.menulogout').hide()
   $('.menuchangepw').hide()
+  $('.end').hide()
   // $('#sign-in').hide()
   $('#change-password').hide()
   userEvents.addHandlers()

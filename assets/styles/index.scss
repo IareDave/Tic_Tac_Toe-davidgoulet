@@ -215,9 +215,9 @@ body {
   position: absolute;
   flex-direction: column;
   margin: 0 auto;
-  margin-top: 150px;
-  right: 830px;
-  top: 00px;
+  margin-top: 250px;
+  right: 400px;
+  top: 200px;
   z-index: 4;
 }
 
@@ -229,8 +229,16 @@ body {
   flex-direction: column;
   margin: 0 auto;
   margin-top: 100px;
-  right: 650px;
+  right: 525px;
   top: 00px;
   font-size: 18px;
   z-index: 3;
+}
+
+input {
+  margin: 5px;
+}
+
+h1 {
+  color: #20948B;
 }

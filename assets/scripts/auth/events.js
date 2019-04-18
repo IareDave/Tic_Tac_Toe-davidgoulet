@@ -140,6 +140,7 @@ export const backButton = function (data) {
 
 export const endButton = function (data) {
   $('.container-fluid').css('z-index', '1')
+  $('.end').hide()
 }
 
 export const addHandlers = function () {
