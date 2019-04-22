@@ -1,5 +1,6 @@
 
-##Technologies used##
+##
+Technologies used
 *Javascript
 *jQuery
 *HTML
