@@ -1,6 +1,5 @@
 **Technologies Used**
-######
-Technologies used
+#
 
 
 
